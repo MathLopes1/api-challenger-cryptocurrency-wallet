@@ -4,8 +4,9 @@ const router = Router()
 
 router.post('/api/v1/wallet', WalletController.criarCarteira)
 .get('/api/v1/wallet', WalletController.listarCarteiras)
-
-
+.get('/api/v1/wallet/:adress', WalletController.pegarUmaCarteira)
+.put('/api/v1/wallet/:adress', WalletController.atualizarCarteira)
+.delete('/api/v1/wallet/:adress', WalletController.apagarUmaCarteira)
 
 
 

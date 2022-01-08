@@ -24,23 +24,15 @@ module.exports = {
       adress_wallet: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'coins',
-          key: 'adress_wallet'
+          model: 'wallet',
+          key: 'adress'
         }
       },
       sendto: {
         type: Sequelize.INTEGER,
-        references: {
-          model: 'coins',
-          key: 'adress_wallet'
-        }
       },
       receivefrom: {
         type: Sequelize.INTEGER,
-        references: {
-          model: 'coins',
-          key: 'adress_wallet'
-        }
       },
       currentecotation: {
         type: Sequelize.FLOAT

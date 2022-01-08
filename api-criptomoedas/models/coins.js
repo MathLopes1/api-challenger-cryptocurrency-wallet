@@ -17,15 +17,6 @@ module.exports = (sequelize, DataTypes) => {
       Coins.hasMany(models.Transactions, {
         foreignKey: 'coin_adress'
       })
-      Coins.hasMany(models.Transactions, {
-        foreignKey: 'adress_wallet'
-      })
-      Coins.hasMany(models.Transactions, {
-        foreignKey: 'sento'
-      })
-      Coins.hasMany(models.Transactions, {
-        foreignKey: 'receivefrom'
-      })
     }
   };
   Coins.init({
