@@ -1,5 +1,6 @@
 const database = require('../models');
 const Sequelize = require('sequelize')
+const axios = require('axios').default;
 const Op = Sequelize.Op
 const coins = database.coins;
 const transactions = database.transactions
@@ -51,7 +52,7 @@ class WalletController {
                 }
                 ]
             })
-            return res.status(200).json(todasAsCarteiras)
+            return res.status(200).json({ "wallet" : todasAsCarteiras})
         } catch (error) {
             return res.status(500).json(error.message)
         }
@@ -75,9 +76,9 @@ class WalletController {
                 }
                 ]
             })
-            return res.status(200).json(Adress)
+            return res.status(200).json({ "wallet" : Adress})
         } catch (error) {
-            return res.status(500).json(error.message)
+            return res.status(404).json(error.message)
         }
     }
 
@@ -97,7 +98,7 @@ class WalletController {
                     adress: Number(adress)
                 }
             })
-            return res.status(200).json(WalletAtualizada)
+            return res.status(200).json({ "wallet" : WalletAtualizada})
         } catch (error) {
             return res.status(404).json(error.message)
         }
@@ -106,10 +107,30 @@ class WalletController {
         const AdressWallet = req.params.adress
         try {
             const Adress = await database.Wallet.destroy({ where: { adress: Number(AdressWallet) } })
-            return res.status(200).json(Adress)
+            return res.status(204).json(Adress)
         } catch (error) {
-            return res.status(500).json(error.message)
+            return res.status(404).json(error.message)
         }
+    }
+
+    static async ListarTransacoesCarteiras(req, res){
+       const {adress} = req.params
+       try {
+           
+       }catch(erro){
+           const Umahistoria = await database.Coins.findAll({
+            where: {CoinsId: Number(adress)},
+            attributes: ['coins', 'fullname', 'amount'],
+            include: {
+                model: transactions,
+                requerid: true,
+                attributes: ['value','datetime','currentCotation' ]
+            }
+        })
+        res.status(200).json(Umahistoria)
+       }
+
+
     }
 
 }
