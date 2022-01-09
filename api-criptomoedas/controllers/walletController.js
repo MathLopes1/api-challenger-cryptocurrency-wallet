@@ -76,6 +76,7 @@ class WalletController {
                 }
                 ]
             })
+            if (Adress === null) throw new Error ('Endereço de carteira não encontrado')
             return res.status(200).json({ "wallet" : Adress})
         } catch (error) {
             return res.status(404).json(error.message)
@@ -98,6 +99,7 @@ class WalletController {
                     adress: Number(adress)
                 }
             })
+            if (WalletAtualizada === null) throw new Error ('Endereço de carteira não encontrado')
             return res.status(200).json({ "wallet" : WalletAtualizada})
         } catch (error) {
             return res.status(404).json(error.message)
@@ -112,25 +114,25 @@ class WalletController {
             return res.status(404).json(error.message)
         }
     }
-
-    static async ListarTransacoesCarteiras(req, res){
-       const {adress} = req.params
-       try {
-           
-       }catch(erro){
-           const Umahistoria = await database.Coins.findAll({
-            where: {CoinsId: Number(adress)},
-            attributes: ['coins', 'fullname', 'amount'],
-            include: {
-                model: transactions,
-                requerid: true,
-                attributes: ['value','datetime','currentCotation' ]
-            }
-        })
-        res.status(200).json(Umahistoria)
-       }
-
-
+    static async historicoTransacao(req,res){
+        const id = req.params.adress
+        try{
+            const Historico = await database.Coins.findAll({
+                where:{
+                    adress_wallet:Number(id)
+                },
+                attributes:['coin','fullname','amount'],
+                include:[{
+                    model:database.Transactions,
+                    attributes:['value','datetime','sendto','receivefrom','currentecotation'], 
+                    as: 'Transactions',
+                    
+                }]
+            })
+            return res.status(200).json(Historico)
+        }catch(err){
+            return res.status(404).send('Endereço não encontrado')
+        }
     }
 
 }

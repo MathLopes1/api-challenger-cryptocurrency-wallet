@@ -2,7 +2,8 @@
 
 <h1> API - CARTEIRA DE CRIPTOMOEDAS </h1>
 <p>
-API Rest utilizando a ORM sequelize para o desenvolvimento de uma carteira de cripto.
+API Rest utilizando a ORM sequelize para o desenvolvimento de uma carteira de cripto.<br>
+Aprendi muito nesses dias desenvolvendo essa api e sinto que amadureci muito, infelizmente o projeto ainda está incompleto. Porém, algumas funcionalidades foram desenvolvido.
 </p>
 
 
@@ -61,7 +62,7 @@ A seguir está uma configuração genérica de local host na porta 3000:
 
 - Listagem Wallets - GET: localhost:3000/api/v1/wallet
 
-   . É possível a listagem por parametros
+   . É possível a listagem por parametros, infelizmente o parametro de moedas eu não consegui desenvolver, porém, o resto foi.
    
 - Adicionar Wallet - POST: localhost:3000/api/v1/wallet/
   
@@ -74,10 +75,14 @@ A seguir está uma configuração genérica de local host na porta 3000:
 - Atualizar Wallet por adress - PUT: localhost:3000/api/v1/wallet{adress}
 
    . Utilizar o adress para atualizar determinada wallet, caso não exista o adress correspodente, retornará um erro.
+
+- Histórico de transações por moedas - GET: localhost:3000/api/v1/wallet/{adress}/transaction
+
+   . Retornará o histórico de de transações de uma determinada moeda na carteira.
    
 - Deletar Wallet - DELETE: localhost:3000/api/v1/wallet/{adress}
 
-   . Remove a Wallet utilizando o adress. 
+   . Remove a Wallet utilizando o adress. Lembrando que não é possível excluir uma wallet ligada as moedas.
 
    ![criptomoedas-para-2021-cover](https://user-images.githubusercontent.com/70352508/148687517-b28d459b-9d97-4ea6-a796-7806c9e0d4f4.jpg)
 
