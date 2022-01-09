@@ -39,9 +39,18 @@ class WalletController {
         try {
             const todasAsCarteiras = await database.Wallet.findAll({
                 where,
-
+                include: [{
+                    model: database.Coins,
+                    attributes: ['coin', 'fullname', 'amount'],
+                    as: 'Coins',
+                    include: [{
+                        model: database.Transactions,
+                        attributes: ['value', 'datetime', 'sendto', 'receivefrom', 'currentecotation'],
+                        as: 'Transactions'
+                    }]
+                }
+                ]
             })
-
             return res.status(200).json(todasAsCarteiras)
         } catch (error) {
             return res.status(500).json(error.message)
@@ -51,7 +60,21 @@ class WalletController {
     static async pegarUmaCarteira(req, res) {
         const AdressWallet = req.params.adress
         try {
-            const Adress = await database.Wallet.findOne({ where: { adress: Number(AdressWallet) } })
+            const Adress = await database.Wallet.findOne({
+                where: { adress: Number(AdressWallet) },
+
+                include: [{
+                    model: database.Coins,
+                    attributes: ['coin', 'fullname', 'amount'],
+                    as: 'Coins',
+                    include: [{
+                        model: database.Transactions,
+                        attributes: ['value', 'datetime', 'sendto', 'receivefrom', 'currentecotation'],
+                        as: 'Transactions'
+                    }]
+                }
+                ]
+            })
             return res.status(200).json(Adress)
         } catch (error) {
             return res.status(500).json(error.message)
