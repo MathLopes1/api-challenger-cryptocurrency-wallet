@@ -1,9 +1,7 @@
-![maxresdefault](https://user-images.githubusercontent.com/70352508/148687487-221e3778-df58-45b9-a18e-603dd2a1b39a.jpg)
 
 <h1> API - CARTEIRA DE CRIPTOMOEDAS </h1>
 <p>
 API Rest utilizando a ORM sequelize para o desenvolvimento de uma carteira de cripto.<br>
-Aprendi muito nesses dias desenvolvendo essa api e sinto que amadureci muito, infelizmente o projeto ainda está incompleto. Porém, algumas funcionalidades foram desenvolvido.
 </p>
 
 
@@ -84,18 +82,6 @@ A seguir está uma configuração genérica de local host na porta 3000:
 
    . Remove a Wallet utilizando o adress. Lembrando que não é possível excluir uma wallet ligada as moedas.
 
-   ![criptomoedas-para-2021-cover](https://user-images.githubusercontent.com/70352508/148687517-b28d459b-9d97-4ea6-a796-7806c9e0d4f4.jpg)
 
-## Créditos
 
-Essa API foi elaborada como teste para o programa de bolsas da Compass pelo time responsável.
 
-## Agradecimentos
-
-Sou extremamente grato aos meus instrutores e líderes de equipe por tudo.
-* Felipe Silva
-* Thais Nicodemus
-* Diego Bueno
-* Bruna Santos
-* Giovanni Hoffmann
-* Gabriel Missio 
