@@ -1,9 +1,9 @@
-const routes = require('../src/app/routes/index');
 const express = require('express');
+const routes = require('./app/routes/index');
+
 const app = express();
 
-
-routes(app)
+routes(app);
 
 app.listen(3000, () => console.log('API Criptomoedas - Servidor on'));
 
