@@ -1,8 +1,8 @@
 const path = require('path');
 
 module.exports = {
-  'config': path.resolve('./api-criptomoedas/config', 'config.json'),
-  'models-path': path.resolve('./api-criptomoedas/models'),
-  'seeders-path': path.resolve('./api-criptomoedas/seeders'),
-  'migrations-path': path.resolve('./api-criptomoedas/migrations')
+  'config': path.resolve('./src/config', 'config.json'),
+  'models-path': path.resolve('./src/models'),
+  'seeders-path': path.resolve('./src/seeders'),
+  'migrations-path': path.resolve('./src/migrations')
 }
